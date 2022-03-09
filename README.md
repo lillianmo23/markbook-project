@@ -5,10 +5,10 @@ Group members: Owen, Jack, Ilia, Lillian
 
 # Navigation
 Code
-⋅⋅* sample-databases: Used to store databses for marks, students etc. (i.e. json files)
++ sample-databases: Used to store databses for marks, students etc. (i.e. json files)
 
 Projects
-⋅⋅* Markbook: Kanban board is used to save user stories, plan tasks etc.
++ Markbook: Kanban board is used to save user stories, plan tasks etc.
 
 # Document Links
 [Markbook Google Document](https://docs.google.com/document/d/1qUVqdeZaTZ0dn1S5t7wM5tiprx7toht7HMRgtFCjJao/edit)
