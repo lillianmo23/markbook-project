@@ -5,6 +5,7 @@ Group members: Owen, Jack, Ilia, Lillian
 
 # Navigation
 Code
++ mvp-code: Used to store code for the first sprint
 + sample-databases: Used to store databses for marks, students etc. (i.e. json files)
 
 Projects
