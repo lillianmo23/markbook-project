@@ -10,7 +10,18 @@ def view_checks(): # Jack
     
     Include a menu at the bottom to add checks, edit checks, or go back
     """
-    print("View Checks function")
+    while True:
+        print("Table goes here")
+        print("[1] Add new mastery checks\n[2] Edit mastery checks\n[B]ack")
+        choice = input("> ")
+        if choice == "1":
+            print("Handle choice 1") # Create a function to add mastery checks
+        elif choice == "2":
+            print("Handle choice 2") # Create a function that edits mastery checks
+        elif choice.lower() == "b":
+            return
+        else:
+            input("Invalid Input.\nPress ENTER to continue.")
 
 def main(): # Jack
     """Displays a menu upon running the file
@@ -27,8 +38,7 @@ def main(): # Jack
         elif choice.lower() == "q":
             return
         else:
-            print("Invalid Input.")
-        input("Press ENTER to continue.")
+            input("Invalid Input.\nPress ENTER to continue.")
 
 if __name__ == "__main__":
     main()
