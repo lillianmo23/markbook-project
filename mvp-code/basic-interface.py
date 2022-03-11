@@ -1,7 +1,10 @@
 import json
+from masteryChecks import *
 from os import system
 
-mastery_checks = ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6"]
+# Load json files
+with open("mastery-checks.json", "r") as f:
+    mastery_checks = json.loads(f.read())
 with open("student-checks.json", "r") as f:
     student_checks = json.loads(f.read())
 
@@ -42,14 +45,18 @@ def view_checks(): # Jack
             print(key + "\t"*value + "∰")
         print("="*len(table))
         
-        print("[1] Add new mastery checks\n[2] Edit mastery checks\n[3] Delete master checks\n[B]ack")
+        print(
+            "[1] Add a new mastery check\n[2] Edit a mastery check\n[3] Delete a mastery check\n[4] Update Student\n[B]ack"
+        )
         choice = input("> ")
         if choice == "1":
-            print("Handle choice 1") # Create a function to add mastery checks
+            mastery_checks = add_mastery_check(mastery_checks)
         elif choice == "2":
-            print("Handle choice 2") # Create a function that edits mastery checks
+            mastery_checks = edit_mastery_check(mastery_checks)
         elif choice == "3":
-            print("Handle choice 3") # Create a function that deletes mastery checks
+            mastery_checks, student_checks = del_checks(mastery_checks, student_checks)
+        elif choice == "4":
+            student_checks = move_a_student(student_checks)
         elif choice.lower() == "b":
             return
         else:
@@ -62,14 +69,12 @@ def main(): # Jack
     """
     while True:
         system("clear")
-        print("Would you like to...\n[1] View Grades\n[2] View Mastery Checks\n[3] View Student Info\n[Q]uit")
+        print("Would you like to...\n[1] View Grades\n[2] View Mastery Checks\n\n[Q]uit")
         choice = input("> ")
         if choice == "1":
             view_grades()
         elif choice == "2":
             view_checks()
-        elif choice == "3":
-            view_students()
         elif choice.lower() == "q":
             return
         else:
@@ -77,3 +82,8 @@ def main(): # Jack
 
 if __name__ == "__main__":
     main()
+# Update json files
+with open("student-checks.json", "w") as f:
+    json.dump(student_checks, f, indent = 4)
+with open("mastery-checks.json", "w") as f:
+    json.dump(mastery_checks, f, indent = 4)
