@@ -2,18 +2,19 @@ from unicodedata import name
 
 import json
 
-grades = {
+with open("students.json", "r") as f:
+    grades = json.loads(f.read())
     
-}
-num_of_students = int(input("how many students do you have?"))
+num_of_students = int(input("how many students would you like to add?"))
 for i in range(num_of_students):
     names = input(f"What is student {i+1}'s name?")
     print()
-    mark = int(input(f"What is {name}'s average?"))
+    mark = int(input(f"What is {names}'s average?"))
     print()
     
-    grades[name] = mark
+    grades[names] = mark
 
+print(grades)
 
-with open("students.json", "a") as f:
-    json.dump(grades, f)
+with open("students.json", "w") as f:
+    json.dump(grades, f, indent = 4)
