@@ -2,7 +2,9 @@ import json
 from masteryChecks import *
 from os import system
 
-mastery_checks = ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6"]
+# Load json files
+with open("mastery-checks.json", "r") as f:
+    mastery_checks = json.loads(f.read())
 with open("student-checks.json", "r") as f:
     student_checks = json.loads(f.read())
 
@@ -43,7 +45,7 @@ def view_checks(): # Jack
             print(key + "\t"*value + "∰")
         print("="*len(table))
         
-        print("[1] Add new mastery checks\n[2] Edit mastery checks\n[3] Delete master checks\n[B]ack")
+        print("[1] Add a new mastery check\n[2] Edit a mastery check\n[3] Delete a mastery check\n[B]ack")
         choice = input("> ")
         if choice == "1":
             print("Handle choice 1") # Create a function to add mastery checks
@@ -78,3 +80,9 @@ def main(): # Jack
 
 if __name__ == "__main__":
     main()
+
+# Update json files
+with open("student-checks.json", "w") as f:
+    json.dump(student_checks, f, indent = 4)
+with open("mastery-checks.json", "w") as f:
+    json.dump(mastery_checks, f, indent = 4)
