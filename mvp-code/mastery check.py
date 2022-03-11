@@ -2,15 +2,11 @@ from unicodedata import name
 from typing import List
 import json
 
-def addmasterycheck():
+def add_mastery_check():
     global check_name
     check_name = input("What is this mastery check called?")
-    return check_name
-
-addmasterycheck()
-
-with open("students.json", "a") as f:
-    json.dump(check_name, f)
+    with open("students.json", "a") as f:
+        json.dump(check_name, f)
 
 def del_checks(mastery_checks: List[str]) -> List[str]:
     """Removes a mastery check from the list of checks
