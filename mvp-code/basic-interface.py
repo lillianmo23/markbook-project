@@ -1,5 +1,6 @@
 import json
 from masteryChecks import *
+from gradesFile import *
 from os import system
 
 # Load json files
@@ -7,7 +8,7 @@ with open("mastery-checks.json", "r") as f:
     mastery_checks = json.loads(f.read())
 with open("student-checks.json", "r") as f:
     student_checks = json.loads(f.read())
-with open("students-grades.json", "r") as f:
+with open("student-grades.json", "r") as f:
     grades = json.loads(f.read())
 
 def view_grades():
@@ -16,6 +17,17 @@ def view_grades():
     Include a menu at the bottom to add grades, edit grades, or go back
     """
     print(grades)
+
+    print(
+        "[1] Update grades [B]ack"
+    )
+    choice = input("> ")
+    if choice == "1":
+        grades = update_grades(grades)
+    elif choice.lower() == "b":
+        return
+    else:
+        input("Invalid Input.\nPress ENTER to continue.")
 
 def view_students():
     while True:
@@ -89,5 +101,5 @@ with open("student-checks.json", "w") as f:
     json.dump(student_checks, f, indent = 4)
 with open("mastery-checks.json", "w") as f:
     json.dump(mastery_checks, f, indent = 4)
-with open("students-grades.json", "w") as f:
+with open("student-grades.json", "w") as f:
     json.dump(grades, f, indent = 4)
