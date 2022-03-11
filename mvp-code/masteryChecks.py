@@ -1,6 +1,6 @@
 from typing import List
 
-def add_mastery_check(mastery_checks: List[str]) -> List[str]:
+def add_mastery_check(mastery_checks: List[str]) -> List[str]: # Lillian
     """Adds a new mastery check
     
     Args:
@@ -13,7 +13,7 @@ def add_mastery_check(mastery_checks: List[str]) -> List[str]:
     mastery_checks.append(check_name)
     return mastery_checks
     
-def move_a_student(student_checks: dict) -> dict:
+def move_a_student(student_checks: dict) -> dict: # Lillian
     """Changes the mastery check a student is on
     
     Args:
@@ -30,7 +30,7 @@ def move_a_student(student_checks: dict) -> dict:
         input("Invalid Input.\nPress ENTER to continue.")
     return student_checks
 
-def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]:
+def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]: # Jack
     """Removes a mastery check from the list of checks, and moves students to their new mastery check
     
     Args:
@@ -52,7 +52,7 @@ def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]:
         break
     return mastery_checks, student_checks
 
-def edit_mastery_check(mastery_checks: List[str]) -> List[str]:
+def edit_mastery_check(mastery_checks: List[str]) -> List[str]: # Lillian
     """Edits a mastery check
 
     Args:
