@@ -1,4 +1,5 @@
 import json
+from masteryChecks import *
 from os import system
 
 mastery_checks = ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6"]
@@ -49,7 +50,7 @@ def view_checks(): # Jack
         elif choice == "2":
             print("Handle choice 2") # Create a function that edits mastery checks
         elif choice == "3":
-            print("Handle choice 3") # Create a function that deletes mastery checks
+            mastery_checks, student_checks = del_checks(mastery_checks, student_checks)
         elif choice.lower() == "b":
             return
         else:
