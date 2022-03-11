@@ -7,13 +7,15 @@ with open("mastery-checks.json", "r") as f:
     mastery_checks = json.loads(f.read())
 with open("student-checks.json", "r") as f:
     student_checks = json.loads(f.read())
+with open("students-grades.json", "r") as f:
+    grades = json.loads(f.read())
 
 def view_grades():
     """Display a table of all student's grades
     
     Include a menu at the bottom to add grades, edit grades, or go back
     """
-    print("View Grades function")
+    print(grades)
 
 def view_students():
     while True:
@@ -87,3 +89,5 @@ with open("student-checks.json", "w") as f:
     json.dump(student_checks, f, indent = 4)
 with open("mastery-checks.json", "w") as f:
     json.dump(mastery_checks, f, indent = 4)
+with open("students-grades.json", "w") as f:
+    json.dump(grades, f, indent = 4)
