@@ -10,7 +10,8 @@ def add_mastery_check(mastery_checks: List[str]) -> List[str]:
         Updated mastery_checks with a new mastery check
     """
     check_name = input("What is this mastery check called?")
-    return mastery_checks.append(check_name)
+    mastery_checks.append(check_name)
+    return mastery_checks
     
 
 def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]:
