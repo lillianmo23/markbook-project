@@ -1,6 +1,6 @@
 from typing import List
 
-def add_mastery_check(mastery_checks: List[str]) -> List[str]: # Lillian
+def add_mastery_check(mastery_checks: List[str]) -> List[str]:
     """Adds a new mastery check
     
     Args:
@@ -13,24 +13,25 @@ def add_mastery_check(mastery_checks: List[str]) -> List[str]: # Lillian
     mastery_checks.append(check_name)
     return mastery_checks
     
-def move_a_student(student_checks: dict) -> dict: # Lillian
+def move_a_student(mastery_checks: List[str], student_checks: dict) -> dict:
     """Changes the mastery check a student is on
     
     Args:
-        student_checks: Dictionary of checks the students are on
+    mastery_checks: The list of mastery checks    
+    student_checks: The dictionary of checks the students are on
     
     Returns:
         Updated student_checks with edited student information
     """
     student = input("What's the student's name?\n> ")
-    check_level = input("\nWhat mastery check are they on right now?\n> ")
-    try:
-        student_checks[student] = int(check_level)
+    check_level = input("What mastery check are they on right now?\n> ")
+    try: # The placement of students on the data table is an int, so index is used to align the student placement
+        student_checks[student] = mastery_checks.index(check_level) + 1
     except:
         input("Invalid Input.\nPress ENTER to continue.")
     return student_checks
 
-def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]: # Jack
+def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]:
     """Removes a mastery check from the list of checks, and moves students to their new mastery check
     
     Args:
@@ -52,7 +53,7 @@ def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]: # 
         break
     return mastery_checks, student_checks
 
-def edit_mastery_check(mastery_checks: List[str]) -> List[str]: # Lillian
+def edit_mastery_check(mastery_checks: List[str]) -> List[str]:
     """Edits a mastery check
 
     Args:
