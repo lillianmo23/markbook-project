@@ -2,7 +2,7 @@ def update_grades(grades: dict) -> dict: # Owen
     """Updates student's grades
     
     Args:
-        grades: A dictionry of students and their grades
+        grades: A dictionary of students and their grades
     
     Returns:
         Updated dictionary grades
@@ -14,6 +14,9 @@ def update_grades(grades: dict) -> dict: # Owen
         input("Invalid Input.\nPress ENTER to continue.")
     for i in range(num):
         names = input(f"What is student {i+1}'s name?\n> ")
-        mark = int(input(f"What is {names}'s average?\n> "))
-        grades[names] = mark
+        mark = input(f"What is {names}'s average?\n> ")
+        try:
+            grades[names] = int(mark)
+        except:
+            input("Invalid Input.\nPress ENTER to continue.")
     return grades
