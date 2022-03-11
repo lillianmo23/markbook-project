@@ -70,7 +70,7 @@ def view_checks(): # Jack
         elif choice == "3":
             mastery_checks, student_checks = del_checks(mastery_checks, student_checks)
         elif choice == "4":
-            student_checks = move_a_student(student_checks)
+            student_checks = move_a_student(mastery_checks, student_checks)
         elif choice.lower() == "b":
             return
         else:
