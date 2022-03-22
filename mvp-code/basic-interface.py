@@ -11,19 +11,20 @@ with open("student-checks.json", "r") as f:
 with open("student-grades.json", "r") as f:
     grades = json.loads(f.read())
 
-def view_grades(GradeList):
+def view_grades():
     """Display a table of all student's grades
     
     Include a menu at the bottom to add grades, edit grades, or go back
     """
-    print(GradeList)
+    global grades, mastery_checks, student_checks
+    print(grades)
 
     print(
         "[1] Update grades [B]ack"
     )
     choice = input("> ")
     if choice == "1":
-        grades = update_grades(GradeList)
+        grades = update_grades(grades)
     elif choice.lower() == "b":
         return
     else:
@@ -86,7 +87,7 @@ def main(): # Jack
         print("Would you like to...\n[1] View Grades\n[2] View Mastery Checks\n\n[Q]uit")
         choice = input("> ")
         if choice == "1":
-            view_grades(grades)
+            view_grades()
         elif choice == "2":
             view_checks()
         elif choice.lower() == "q":
