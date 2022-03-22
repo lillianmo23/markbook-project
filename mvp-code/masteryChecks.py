@@ -13,21 +13,22 @@ def add_mastery_check(mastery_checks: List[str]) -> List[str]:
     mastery_checks.append(check_name)
     return mastery_checks
     
-def move_a_student(student_checks: dict) -> dict:
+def move_a_student(mastery_checks: List[str], student_checks: dict) -> dict:
     """Changes the mastery check a student is on
     
     Args:
-        student_checks: Dictionary of checks the students are on
+    mastery_checks: The list of mastery checks    
+    student_checks: The dictionary of checks the students are on
     
     Returns:
         Updated student_checks with edited student information
     """
     student = input("What's the student's name?\n> ")
-    check_level = input("\nWhat mastery check are they on right now?\n> ")
-    try:
-      student_checks[student] = check_level
+    check_level = input("What mastery check are they on right now?\n> ")
+    try: # The placement of students on the data table is an int, so index is used to align the student placement
+        student_checks[student] = mastery_checks.index(check_level) + 1
     except:
-      input("Invalid Input: \n Press ENTER to continue.")
+        input("Invalid Input.\nPress ENTER to continue.")
     return student_checks
 
 def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]:
@@ -47,7 +48,7 @@ def del_checks(mastery_checks: List[str], student_checks: dict) -> List[str]:
         index = mastery_checks.index(choice)
         mastery_checks.remove(choice)
         for key, value in student_checks.items():
-            if mastery_checks.index(value) + 1 > index + 1:
+            if value > index + 1:
                 student_checks[key] = value - 1
         break
     return mastery_checks, student_checks
