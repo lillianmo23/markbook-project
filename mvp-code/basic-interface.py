@@ -3,14 +3,6 @@ from masteryChecks import *
 from gradesFile import *
 from os import system
 
-# Load json files
-with open("mastery-checks.json", "r") as f:
-    mastery_checks = json.loads(f.read())
-with open("student-checks.json", "r") as f:
-    student_checks = json.loads(f.read())
-with open("student-grades.json", "r") as f:
-    grades = json.loads(f.read())
-
 def view_grades():
     """Display a table of all student's grades
     
@@ -48,9 +40,9 @@ def view_checks(): # Jack
     
     Include a menu at the bottom to add checks, edit checks, or go back
     """
+    global mastery_checks, student_checks
     while True:
         system("clear")
-        global mastery_checks, student_checks
         table = "        "
         for check in mastery_checks:
             table += check + " "
@@ -95,8 +87,17 @@ def main(): # Jack
         else:
             input("Invalid Input.\nPress ENTER to continue.")
 
+# Load json files
+with open("mastery-checks.json", "r") as f:
+    mastery_checks = json.loads(f.read())
+with open("student-checks.json", "r") as f:
+    student_checks = json.loads(f.read())
+with open("student-grades.json", "r") as f:
+    grades = json.loads(f.read())            
+
 if __name__ == "__main__":
     main()
+
 # Update json files
 with open("student-checks.json", "w") as f:
     json.dump(student_checks, f, indent = 4)
