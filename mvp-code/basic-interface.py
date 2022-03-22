@@ -9,18 +9,23 @@ def view_grades():
     Include a menu at the bottom to add grades, edit grades, or go back
     """
     global grades, mastery_checks, student_checks
-    print(grades)
-
-    print(
-        "[1] Update grades [B]ack"
-    )
-    choice = input("> ")
-    if choice == "1":
-        grades = update_grades(grades)
-    elif choice.lower() == "b":
-        return
-    else:
-        input("Invalid Input.\nPress ENTER to continue.")
+    while True:
+        system("clear")
+        print("Student\tGrade\n" + "="*13)
+        for key, value in grades.items():
+            print(f"{key}\t{value}")
+        print("="*13)
+    
+        print(
+            "[1] Update grades\n[B]ack"
+        )
+        choice = input("> ")
+        if choice == "1":
+            grades = update_grades(grades)
+        elif choice.lower() == "b":
+            return
+        else:
+            input("Invalid Input.\nPress ENTER to continue.")
 
 def view_students():
     while True:
@@ -49,7 +54,7 @@ def view_checks(): # Jack
         print(table)
         print("="*len(table))
         for key, value in student_checks.items():
-            print(key + "\t"*(mastery_checks.index(value)+1) + "∰")
+            print(key + "\t"*(value) + "∰")
         print("="*len(table))
         
         print(
@@ -63,7 +68,7 @@ def view_checks(): # Jack
         elif choice == "3":
             mastery_checks, student_checks = del_checks(mastery_checks, student_checks)
         elif choice == "4":
-            student_checks = move_a_student(student_checks)
+            student_checks = move_a_student(mastery_checks, student_checks)
         elif choice.lower() == "b":
             return
         else:
@@ -76,7 +81,7 @@ def main(): # Jack
     """
     while True:
         system("clear")
-        print("Would you like to...\n[1] View Grades\n[2] View Mastery Checks\n\n[Q]uit")
+        print("Would you like to...\n[1] View Grades\n[2] View Mastery Checks\n\nSave and [Q]uit")
         choice = input("> ")
         if choice == "1":
             view_grades()
