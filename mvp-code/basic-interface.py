@@ -79,6 +79,14 @@ def main(): # Jack
     
     Menu will prompt to choose between checking grades and mastery checks
     """
+    # Load json files
+    with open("mastery-checks.json", "r") as f:
+        mastery_checks = json.loads(f.read())
+    with open("student-checks.json", "r") as f:
+        student_checks = json.loads(f.read())
+    with open("student-grades.json", "r") as f:
+        grades = json.loads(f.read())            
+
     while True:
         system("clear")
         print("Would you like to...\n[1] View Grades\n[2] View Mastery Checks\n\nSave and [Q]uit")
@@ -92,21 +100,13 @@ def main(): # Jack
         else:
             input("Invalid Input.\nPress ENTER to continue.")
 
-# Load json files
-with open("mastery-checks.json", "r") as f:
-    mastery_checks = json.loads(f.read())
-with open("student-checks.json", "r") as f:
-    student_checks = json.loads(f.read())
-with open("student-grades.json", "r") as f:
-    grades = json.loads(f.read())            
+    # Update json files
+    with open("student-checks.json", "w") as f:
+        json.dump(student_checks, f, indent = 4)
+    with open("mastery-checks.json", "w") as f:
+        json.dump(mastery_checks, f, indent = 4)
+    with open("student-grades.json", "w") as f:
+        json.dump(grades, f, indent = 4)
 
 if __name__ == "__main__":
     main()
-
-# Update json files
-with open("student-checks.json", "w") as f:
-    json.dump(student_checks, f, indent = 4)
-with open("mastery-checks.json", "w") as f:
-    json.dump(mastery_checks, f, indent = 4)
-with open("student-grades.json", "w") as f:
-    json.dump(grades, f, indent = 4)
